@@ -14,8 +14,9 @@ bot = telebot.TeleBot(BOT_TOKEN)
 #bot.config['api_key'] = BOT_TOKEN
 #print(message.chat.type())
 
-mem_post = mempars.mempost()
+
 while True:
+    mem_post = mempars.mempost()
     for post in mem_post:
         if post['date'] > new_date:
         #if post['date'] > int(last_date) :
@@ -35,12 +36,12 @@ while True:
                 bot.send_photo(channel, img, caption=post['text'])
             else:
                 bot.send_message(channel, post['text'])
-            file = open('date.txt', 'w')
+            #file = open('date.txt', 'w')
             new_date = post['date']
-            last_date = post['date']
-            file.write(str(last_date))
-            file.close()
+            #last_date = post['date']
+            #file.write(str(last_date))
+            #file.close()
     print('wait')
     time.sleep(int(60))
     print('agean')
-bot.polling(non_stop = True)
+#bot.polling(non_stop = True)
